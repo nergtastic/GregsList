@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.25;
+    color: hsl(210, 11%, 15%);
+    background-color: #fff;
+}
+
+#cars {
+    margin-left: 20px;
+}
+
+.greg-form{
+    text-align: left;
+    display: inline;
+}
+
+.item-details{
+    text-align: left;
+    display: inline-block;
+    height: 100%;
+    margin: 15px; 
+
+}
+
+.side-form {
+    margin-top: 25p;
+    padding: 30px;
+    text-justify: center;
+}
