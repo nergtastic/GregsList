@@ -8,8 +8,6 @@ function JobController() {
             <input type="text" name="company" class="form-control-sm" style="margin: 10px 0px 0px 25px; display: block";>
             <label for="jobTitle" style="margin: 10px 0px 0px 25px;">Job Title</label>
             <input type="text" name="jobTitle" class="form-control-sm" style="margin: 10px 0px 0px 25px; display: block";>
-            <label for="imgURL" style="margin: 10px 0px 0px 25px;">Image URL</label>
-            <input type="text" name="imgURL" class="form-control-sm" style="margin: 10px 0px 0px 25px; display: block";>
             <label for="hours" style="margin: 10px 0px 0px 25px;">Hours</label>
             <input type="number" name="hours" class="form-control-sm" style="margin: 10px 0px 0px 25px; display: block";>
             <label for="rate" style="margin: 10px 0px 0px 25px;">Rate</label>
@@ -18,10 +16,10 @@ function JobController() {
             <input type="text" name="description" class="form-control-sm" style="margin: 10px 0px 0px 25px; display: block";>
             <button type="submit" style="margin: 25px;">Post Jobs</button>
         </form>
-        <div id="jobs"></div>
+        <div id="jobs" class="col-9"></div>
         `
     document.getElementById('maker').innerHTML = template
-    draw()
+    jobService.loadJobs(draw)
     
     }
 
@@ -32,13 +30,12 @@ function JobController() {
         for(let i=0; i < jobs.length; i++){
             const job = jobs[i];
             template += `
-            <div class="item-details">
+            <div class="job-details">
                 <p>Company: ${job.company}</p>
                 <p>Job Title: ${job.jobTitle}</p>
                 <p>Hours: ${job.hours}</p>
                 <p>Rate: ${job.rate}</p>
-                <p style="width: 300px;">Description: ${job.description}</p>
-                <img src="${job.imgURL}" alt="" style="width: 300px;">
+                <p style="width: 250px;">Description: ${job.description}</p>
             </div>
             `
         }
@@ -48,14 +45,15 @@ function JobController() {
     this.makeJob = function (event) {
         event.preventDefault();
         let formData = event.target
-        jobService.makeJob(formData)
+        jobService.makeJob(formData, draw)
+        formData.reset()
         // let keys = Object.keys(formData)
-        formData.company.value = ""
-        formData.jobTitle.value = ""
-        formData.imgURL.value = ""
-        formData.hours.value = ""
-        formData.rate.value = ""
-        formData.description.value = ""
-        draw()
+        // formData.company.value = ""
+        // formData.jobTitle.value = ""
+        // formData.imgUrl.value = ""
+        // formData.hours.value = ""
+        // formData.rate.value = ""
+        // formData.description.value = ""
+        // draw()
     }
 }

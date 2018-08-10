@@ -8,8 +8,8 @@ function HouseController() {
             <input type="number" name="bedrooms" class="form-control-sm" style="margin: 10px 0px 0px 25px; display: block";>
             <label for="bathrooms" style="margin: 10px 0px 0px 25px;">Bathrooms</label>
             <input type="number" name="bathrooms" class="form-control-sm" style="margin: 10px 0px 0px 25px; display: block";>
-            <label for="imgURL" style="margin: 10px 0px 0px 25px;">Image URL</label>
-            <input type="text" name="imgURL" class="form-control-sm" style="margin: 10px 0px 0px 25px; display: block";>
+            <label for="imgUrl" style="margin: 10px 0px 0px 25px;">Image URL</label>
+            <input type="text" name="imgUrl" class="form-control-sm" style="margin: 10px 0px 0px 25px; display: block";>
             <label for="levels" style="margin: 10px 0px 0px 25px;">Levels</label>
             <input type="number" name="levels" class="form-control-sm" style="margin: 10px 0px 0px 25px; display: block";>
             <label for="year" style="margin: 10px 0px 0px 25px;">Year Built</label>
@@ -20,10 +20,10 @@ function HouseController() {
             <input type="text" name="description" class="form-control-sm" style="margin: 10px 0px 0px 25px; display: block";>
             <button type="submit" style="margin: 25px;">Post House</button>
         </form>
-        <div id="houses"></div>
+        <div id="houses" class="col-9"></div>
         `
     document.getElementById('maker').innerHTML = template
-    draw()
+    houseService.loadHouses(draw)
     
     }
 
@@ -40,8 +40,8 @@ function HouseController() {
                 <p>Levels: ${house.levels}</p>
                 <p>Year Built: ${house.year}</p>
                 <p>Price: ${house.price}</p>
-                <p style="width: 300px;">Description: ${house.description}</p>
-                <img src="${house.imgURL}" alt="" style="width: 300px;">
+                <p style="width: 250px;">Description: ${house.description}</p>
+                <img src="${house.imgUrl}" alt="" style="width: 260px;">
             </div>
             `
         }
@@ -51,15 +51,16 @@ function HouseController() {
     this.makeHouse = function (event) {
         event.preventDefault();
         let formData = event.target
-        houseService.makeHouse(formData)
+        houseService.makeHouse(formData, draw)
+        formData.reset()
         // let keys = Object.keys(formData)
-        formData.bedrooms.value = ""
-        formData.bathrooms.value = ""
-        formData.imgURL.value = ""
-        formData.levels.value = ""
-        formData.year.value = ""
-        formData.price.value = ""
-        formData.description.value = ""
-        draw()
+        // formData.bedrooms.value = ""
+        // formData.bathrooms.value = ""
+        // formData.imgUrl.value = ""
+        // formData.levels.value = ""
+        // formData.year.value = ""
+        // formData.price.value = ""
+        // formData.description.value = ""
+        // draw()
     }
 }
