@@ -38,8 +38,8 @@ function CarController() {
                 <p>Model: ${car.model}</p>
                 <p>Year: ${car.year}</p>
                 <p>Price: ${car.price}</p>
-                <p style="width: 260px;">Description: ${car.description}</p>
-                <img src="${car.imgUrl}" alt="" style="width: 260px;">
+                <p style="width: 250px;">Description: ${car.description}</p>
+                <img src="${car.imgUrl}" alt="" style="width: 250px;">
             </div>
             `
         }

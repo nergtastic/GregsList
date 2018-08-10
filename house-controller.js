@@ -41,7 +41,7 @@ function HouseController() {
                 <p>Year Built: ${house.year}</p>
                 <p>Price: ${house.price}</p>
                 <p style="width: 250px;">Description: ${house.description}</p>
-                <img src="${house.imgUrl}" alt="" style="width: 260px;">
+                <img src="${house.imgUrl}" alt="" style="width: 250px;">
             </div>
             `
         }
